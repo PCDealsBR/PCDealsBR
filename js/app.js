@@ -1,6 +1,7 @@
-import { db, auth } from "./firebase-config.js";
+import { db, auth, storage } from "./firebase-config.js";
 import { collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 let allDeals       = [];
 let activeStore    = "all";
@@ -118,10 +119,27 @@ function buildCard(d) {
     }
   }
 
-  // Improved image handling with better fallback
-  const imgHTML = d.imageUrl
-    ? `<img src="${d.imageUrl}" alt="${d.title}" loading="lazy" 
-         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';console.log('Image failed to load: ${d.imageUrl}')"
+  // Improved image handling - try to get URL from Firebase Storage if it's a storage path
+  let imageUrl = d.imageUrl;
+  if (imageUrl && !imageUrl.startsWith('http') && !imageUrl.startsWith('data:')) {
+    // It's likely a Firebase Storage path
+    try {
+      const storageRef = ref(storage, imageUrl);
+      getDownloadURL(storageRef).then(url => {
+        imageUrl = url;
+      }).catch(err => {
+        console.log('Storage URL error:', err);
+        imageUrl = null;
+      });
+    } catch (e) {
+      console.log('Storage ref error:', e);
+      imageUrl = null;
+    }
+  }
+
+  const imgHTML = imageUrl
+    ? `<img src="${imageUrl}" alt="${d.title}" loading="lazy" 
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';console.log('Image failed to load: ${imageUrl}')"
          onload="this.style.display='block';this.nextElementSibling.style.display='none'"/>
        <span class="placeholder-icon" style="display:none">${catIcon}</span>`
     : `<span class="placeholder-icon">${catIcon}</span>`;
@@ -238,12 +256,16 @@ async function handleLogin() {
   try {
     if (auth.currentUser) {
       await signOut(auth);
+      console.log('User signed out');
     } else {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      console.log('User signed in:', result.user);
     }
   } catch (error) {
     console.error('Authentication error:', error);
-    alert('Erro ao fazer login. Tente novamente.');
+    console.error('Error code:', error.code);
+    console.error('Error message:', error.message);
+    alert(`Erro ao fazer login: ${error.message}\n\nVerifique se o Google Sign-In está habilitado no console do Firebase.`);
   }
 }
 
