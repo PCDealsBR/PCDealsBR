@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Configurações de conta do PCDeals - Gerencie seu perfil e preferências." />
+  <meta name="robots" content="noindex, nofollow" />
+  
+  <title>Minha Conta — PCDeals</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">PCDeals</span>
+      </a>
+      
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html#hero" class="nav-link">Início</a>
+        <a href="index.html#offers" class="nav-link">Ofertas</a>
+        <a href="index.html#stores" class="nav-link">Lojas</a>
+        <a href="index.html#categories" class="nav-link">Categorias</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="index.html#about" class="nav-link">Sobre</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="btn-login" id="btnLogin">
+          <span class="login-text">Entrar</span>
+          <svg class="user-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+        <button class="btn-account" id="btnAccount" style="display:none">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#hero" class="mobile-nav-link">Início</a>
+    <a href="index.html#offers" class="mobile-nav-link">Ofertas</a>
+    <a href="index.html#stores" class="mobile-nav-link">Lojas</a>
+    <a href="index.html#categories" class="mobile-nav-link">Categorias</a>
+    <a href="blog.html" class="mobile-nav-link">Blog</a>
+    <a href="index.html#about" class="mobile-nav-link">Sobre</a>
+    <button class="theme-toggle-mobile" id="themeToggleMobile" aria-label="Alternar tema">
+      <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+      <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <button class="btn-login-mobile" id="btnLoginMobile">Entrar</button>
+  </div>
+
+  <!-- Account Page -->
+  <section class="account-page">
+    <div class="container">
+      <div class="account-content">
+        <h1 class="account-title">Minha Conta</h1>
+        
+        <!-- User Info Card -->
+        <div class="account-card">
+          <div class="account-header">
+            <div class="user-avatar" id="userAvatar">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <div class="user-info">
+              <h2 class="user-name" id="userName">Carregando...</h2>
+              <p class="user-email" id="userEmail">...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Card -->
+        <div class="account-card">
+          <h3 class="card-title">Configurações</h3>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Tema</span>
+              <span class="setting-description">Escolha entre tema claro ou escuro</span>
+            </div>
+            <button class="setting-toggle" id="settingTheme">
+              <span class="toggle-text">Escuro</span>
+            </button>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Notificações</span>
+              <span class="setting-description">Receba alertas sobre novas ofertas</span>
+            </div>
+            <button class="setting-toggle" id="settingNotifications">
+              <span class="toggle-text">Desativado</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="account-card danger-zone">
+          <h3 class="card-title">Zona de Perigo</h3>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Sair da conta</span>
+              <span class="setting-description">Desconectar sua conta do Google</span>
+            </div>
+            <button class="btn-danger" id="btnSignOut">Sair</button>
+          </div>
+        </div>
+
+        <!-- Account Info -->
+        <div class="account-card">
+          <h3 class="card-title">Informações da Conta</h3>
+          
+          <div class="info-row">
+            <span class="info-label">ID do Usuário</span>
+            <span class="info-value" id="userId">...</span>
+          </div>
+          
+          <div class="info-row">
+            <span class="info-label">Provedor</span>
+            <span class="info-value">Google</span>
+          </div>
+          
+          <div class="info-row">
+            <span class="info-label">Email verificado</span>
+            <span class="info-value" id="emailVerified">...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">⚡</span>
+            <span class="logo-text">PCDeals</span>
+          </a>
+          <p class="footer-tagline">As melhores ofertas de hardware do Brasil</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4 class="footer-title">Navegação</h4>
+            <a href="index.html#hero" class="footer-link">Início</a>
+            <a href="index.html#offers" class="footer-link">Ofertas</a>
+            <a href="index.html#stores" class="footer-link">Lojas</a>
+            <a href="blog.html" class="footer-link">Blog</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title">Legal</h4>
+            <a href="terms.html" class="footer-link">Termos de uso</a>
+            <a href="privacy.html" class="footer-link">Privacidade</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title">Admin</h4>
+            <a href="admin/index.html" class="footer-link">Painel Admin</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 PCDeals. Todos os direitos reservados.</p>
+        <p class="footer-disclaimer">Preços podem variar. Confirme na loja antes de comprar.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module">
+    import { auth } from "./js/firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    // Check if user is logged in
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // Update user info
+      document.getElementById('userName').textContent = user.displayName || 'Usuário';
+      document.getElementById('userEmail').textContent = user.email;
+      document.getElementById('userId').textContent = user.uid.substring(0, 12) + '...';
+      document.getElementById('emailVerified').textContent = user.emailVerified ? 'Sim' : 'Não';
+
+      // Update avatar if user has photo
+      if (user.photoURL) {
+        document.getElementById('userAvatar').innerHTML = `<img src="${user.photoURL}" alt="Avatar" />`;
+      }
+
+      // Update theme button
+      const themeToggle = document.getElementById('settingTheme');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      themeToggle.querySelector('.toggle-text').textContent = currentTheme === 'dark' ? 'Escuro' : 'Claro';
+    });
+
+    // Theme toggle
+    document.getElementById('settingTheme').addEventListener('click', () => {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      document.getElementById('settingTheme').querySelector('.toggle-text').textContent = newTheme === 'dark' ? 'Escuro' : 'Claro';
+    });
+
+    // Sign out
+    document.getElementById('btnSignOut').addEventListener('click', async () => {
+      try {
+        await signOut(auth);
+        window.location.href = 'index.html';
+      } catch (error) {
+        console.error('Sign out error:', error);
+        alert('Erro ao sair da conta. Tente novamente.');
+      }
+    });
+
+    // Notifications toggle (placeholder)
+    document.getElementById('settingNotifications').addEventListener('click', function() {
+      const toggleText = this.querySelector('.toggle-text');
+      const isDisabled = toggleText.textContent === 'Desativado';
+      toggleText.textContent = isDisabled ? 'Ativado' : 'Desativado';
+      alert('Funcionalidade de notificações em desenvolvimento.');
+    });
+  </script>
+  <script>
+    // Theme Toggle (navbar)
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggleMobile = document.getElementById('themeToggleMobile');
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+
+    initTheme();
+
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

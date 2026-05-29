@@ -343,6 +343,24 @@ input, select { font-family: var(--font); border: none; outline: none; }
   color: var(--accent);
   background: var(--accent-bg);
 }
+.btn-account {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-account:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
 .hamburger {
   display: none;
   flex-direction: column;
@@ -1467,6 +1485,178 @@ input, select { font-family: var(--font); border: none; outline: none; }
 }
 .footer-link.active {
   color: var(--accent);
+}
+
+/* ── Account Page ─────────────────────────────────────── */
+.account-page {
+  padding: 120px 0 80px;
+  background: var(--bg);
+  min-height: calc(100vh - 200px);
+}
+.account-content {
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeUp 0.8s ease-out;
+}
+.account-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 32px;
+  color: var(--text);
+}
+.account-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.4s ease-out;
+}
+.account-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.user-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.user-avatar svg {
+  color: var(--text3);
+}
+.user-info h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.user-email {
+  font-size: 14px;
+  color: var(--text3);
+}
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.setting-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.setting-info {
+  flex: 1;
+}
+.setting-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  display: block;
+  margin-bottom: 4px;
+}
+.setting-description {
+  font-size: 14px;
+  color: var(--text3);
+}
+.setting-toggle {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.setting-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.danger-zone {
+  border-color: rgba(255, 0, 0, 0.3);
+}
+.danger-zone .card-title {
+  color: #ff4444;
+}
+.btn-danger {
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff4444;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-danger:hover {
+  background: rgba(255, 0, 0, 0.2);
+  border-color: #ff4444;
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.info-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.info-label {
+  font-size: 14px;
+  color: var(--text3);
+}
+.info-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── AdSense ──────────────────────────────────────────── */
+.ad-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-height: 100px;
+}
+.ad-top {
+  margin-bottom: 32px;
+}
+.ad-middle {
+  margin: 48px auto;
+}
+.adsbygoogle {
+  display: block;
 }
 
 /* ── Blog Page ─────────────────────────────────────────── */
