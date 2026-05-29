@@ -256,13 +256,22 @@
       }
     });
 
-    // Notifications toggle (placeholder)
+    // Notifications toggle
     document.getElementById('settingNotifications').addEventListener('click', function() {
       const toggleText = this.querySelector('.toggle-text');
       const isDisabled = toggleText.textContent === 'Desativado';
       toggleText.textContent = isDisabled ? 'Ativado' : 'Desativado';
-      alert('Funcionalidade de notificações em desenvolvimento.');
+      localStorage.setItem('notifications', isDisabled ? 'true' : 'false');
+      if (isDisabled) {
+        alert('Notificações ativadas! Você receberá alertas sobre novas ofertas.');
+      } else {
+        alert('Notificações desativadas.');
+      }
     });
+
+    // Initialize notifications state
+    const notificationsEnabled = localStorage.getItem('notifications') === 'true';
+    document.getElementById('settingNotifications').querySelector('.toggle-text').textContent = notificationsEnabled ? 'Ativado' : 'Desativado';
   </script>
   <script>
     // Theme Toggle (navbar)
