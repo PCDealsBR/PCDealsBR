@@ -1,5 +1,6 @@
-import { db } from "./firebase-config.js";
+import { db, auth } from "./firebase-config.js";
 import { collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 let allDeals       = [];
 let activeStore    = "all";
@@ -117,8 +118,12 @@ function buildCard(d) {
     }
   }
 
+  // Improved image handling with better fallback
   const imgHTML = d.imageUrl
-    ? `<img src="${d.imageUrl}" alt="${d.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><span class="placeholder-icon" style="display:none">${catIcon}</span>`
+    ? `<img src="${d.imageUrl}" alt="${d.title}" loading="lazy" 
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';console.log('Image failed to load: ${d.imageUrl}')"
+         onload="this.style.display='block';this.nextElementSibling.style.display='none'"/>
+       <span class="placeholder-icon" style="display:none">${catIcon}</span>`
     : `<span class="placeholder-icon">${catIcon}</span>`;
 
   return `
@@ -188,3 +193,59 @@ setInterval(() => {
 
 // Subscribe to deals
 subscribeDeals();
+
+/* ── Theme Toggle ─────────────────────────────────────── */
+const themeToggle = document.getElementById('themeToggle');
+const themeToggleMobile = document.getElementById('themeToggleMobile');
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+}
+
+// Initialize theme from localStorage or system preference
+function initTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+}
+
+initTheme();
+
+if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+/* ── Firebase Authentication ───────────────────────────── */
+const provider = new GoogleAuthProvider();
+const btnLogin = document.getElementById('btnLogin');
+const btnLoginMobile = document.getElementById('btnLoginMobile');
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    if (btnLogin) btnLogin.textContent = 'Sair';
+    if (btnLoginMobile) btnLoginMobile.textContent = 'Sair';
+  } else {
+    if (btnLogin) btnLogin.textContent = 'Entrar';
+    if (btnLoginMobile) btnLoginMobile.textContent = 'Entrar';
+  }
+});
+
+async function handleLogin() {
+  try {
+    if (auth.currentUser) {
+      await signOut(auth);
+    } else {
+      await signInWithPopup(auth, provider);
+    }
+  } catch (error) {
+    console.error('Authentication error:', error);
+    alert('Erro ao fazer login. Tente novamente.');
+  }
+}
+
+if (btnLogin) btnLogin.addEventListener('click', handleLogin);
+if (btnLoginMobile) btnLoginMobile.addEventListener('click', handleLogin);
