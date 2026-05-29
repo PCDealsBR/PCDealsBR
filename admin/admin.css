@@ -1,0 +1,77 @@
+.login-wrap { display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
+.login-card { width:100%; max-width:360px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:32px; }
+.admin-body { padding:28px 0 80px; display:flex; flex-direction:column; gap:24px; }
+.admin-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; transition:background var(--transition); }
+.admin-card h2 { font-size:15px; font-weight:600; margin-bottom:20px; }
+
+/* Form */
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+.form-group { display:flex; flex-direction:column; gap:5px; }
+.span2 { grid-column:span 2; }
+.form-group label { font-size:12px; font-weight:500; color:var(--text2); }
+.form-group input,.form-group select {
+  background:var(--bg); border:1px solid var(--border);
+  color:var(--text); font-family:var(--font); font-size:14px;
+  padding:8px 12px; border-radius:var(--radius-sm); outline:none;
+  transition:border-color var(--transition);
+}
+.form-group input:focus,.form-group select:focus { border-color:var(--accent); }
+.form-group input::placeholder { color:var(--text3); }
+input[type="datetime-local"] { color-scheme:dark; }
+
+.expiry-group { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:14px; }
+.expiry-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:8px; }
+.expiry-row input[type="datetime-local"] { flex:1; min-width:180px; }
+.expiry-shortcuts { display:flex; flex-wrap:wrap; gap:5px; }
+.btn-shortcut { background:var(--surface); border:1px solid var(--border); color:var(--text2); font-size:12px; padding:4px 10px; border-radius:100px; transition:all .15s; cursor:pointer; font-family:var(--font); }
+.btn-shortcut:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-bg); }
+.btn-clear-expiry { background:none; border:1px solid var(--border); color:var(--text3); font-size:12px; padding:4px 10px; border-radius:100px; transition:all .15s; cursor:pointer; font-family:var(--font); }
+.btn-clear-expiry:hover { border-color:var(--red); color:var(--red); }
+.expiry-hint { font-size:11px; color:var(--text3); }
+
+.form-actions { display:flex; gap:10px; justify-content:flex-end; }
+.btn-primary { background:var(--accent); color:#fff; font-weight:600; font-size:14px; padding:9px 20px; border-radius:var(--radius-sm); border:none; transition:opacity .15s; cursor:pointer; font-family:var(--font); }
+.btn-primary:hover { opacity:.85; }
+.btn-outline { background:transparent; border:1px solid var(--border); color:var(--text2); font-size:13px; padding:7px 16px; border-radius:var(--radius-sm); transition:all .15s; cursor:pointer; font-family:var(--font); text-decoration:none; display:inline-flex; align-items:center; }
+.btn-outline:hover { border-color:var(--border2); color:var(--text); }
+.form-error { background:var(--red-bg); border:1px solid var(--red); color:var(--red); font-size:13px; padding:10px 14px; border-radius:var(--radius-sm); margin-bottom:14px; }
+.form-msg { font-size:13px; padding:10px 14px; border-radius:var(--radius-sm); margin-bottom:14px; }
+.form-msg.success { background:var(--green-bg); border:1px solid var(--green); color:var(--green); }
+.form-msg.error   { background:var(--red-bg);   border:1px solid var(--red);   color:var(--red);   }
+
+/* Table */
+.table-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+.toggle-label { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--text2); cursor:pointer; }
+.toggle-label input { accent-color:var(--accent); }
+.admin-search { background:var(--bg); border:1px solid var(--border); color:var(--text); font-family:var(--font); font-size:13px; padding:7px 12px; border-radius:var(--radius-sm); outline:none; width:180px; }
+.admin-search:focus { border-color:var(--accent); }
+.admin-search::placeholder { color:var(--text3); }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+thead th { text-align:left; padding:8px 12px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.5px; color:var(--text3); border-bottom:1px solid var(--border); }
+tbody tr { border-bottom:1px solid var(--border); transition:background .15s; }
+tbody tr:hover { background:var(--bg); }
+tbody tr.row-expired { opacity:.4; }
+tbody td { padding:10px 12px; vertical-align:middle; }
+.td-title { max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.td-store { color:var(--accent); font-weight:600; }
+.td-price { font-weight:700; color:var(--green); }
+.td-disc  { color:var(--red); font-weight:600; }
+
+.exp-none { color:var(--text3); font-size:12px; }
+.exp-ok   { color:var(--green); font-size:12px; }
+.exp-soon { color:var(--orange); font-size:12px; font-weight:600; }
+.exp-gone { color:var(--red); font-size:12px; font-weight:600; }
+
+.status-badge { font-size:11px; font-weight:600; padding:2px 8px; border-radius:100px; }
+.status-badge.active  { background:var(--green-bg); color:var(--green); }
+.status-badge.expired { background:var(--red-bg);   color:var(--red);   }
+
+.btn-edit   { background:none; border:1px solid var(--border); color:var(--text2); font-size:12px; padding:3px 8px; border-radius:6px; margin-right:4px; transition:all .15s; cursor:pointer; }
+.btn-edit:hover { border-color:var(--accent); color:var(--accent); }
+.btn-renew  { background:none; border:1px solid var(--border); color:var(--text3); font-size:12px; padding:3px 8px; border-radius:6px; margin-right:4px; transition:all .15s; cursor:pointer; }
+.btn-renew:hover { border-color:var(--green); color:var(--green); }
+.btn-delete { background:none; border:1px solid transparent; color:var(--text3); font-size:12px; padding:3px 8px; border-radius:6px; transition:all .15s; cursor:pointer; }
+.btn-delete:hover { border-color:var(--red); color:var(--red); }
+
+@media (max-width:640px) { .form-grid { grid-template-columns:1fr; } .span2 { grid-column:span 1; } }

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PCDeals - Encontre as melhores promoções de hardware, peças de PC, periféricos e notebooks no Brasil. Monitoramos as principais lojas para você economizar." />
+  <meta name="keywords" content="hardware, promoções, peças de pc, gamer, kabum, pichau, terabyte, amazon, mercadolivre, ofertas, descontos" />
+  <meta name="author" content="PCDeals" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="PCDeals - Promoções de Hardware" />
+  <meta property="og:description" content="Encontre as melhores promoções de hardware no Brasil em um só lugar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pcdeals.com.br" />
+  <meta property="og:image" content="https://pcdeals.com.br/og-image.png" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PCDeals - Promoções de Hardware" />
+  <meta name="twitter:description" content="Encontre as melhores promoções de hardware no Brasil." />
+  
+  <title>PCDeals — Promoções de Hardware</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">PCDeals</span>
+    </div>
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">PCDeals</span>
+      </a>
+      
+      <div class="nav-menu" id="navMenu">
+        <a href="#hero" class="nav-link">Início</a>
+        <a href="#offers" class="nav-link">Ofertas</a>
+        <a href="#stores" class="nav-link">Lojas</a>
+        <a href="#categories" class="nav-link">Categorias</a>
+        <a href="#blog" class="nav-link">Blog</a>
+        <a href="#about" class="nav-link">Sobre</a>
+      </div>
+
+      <div class="nav-actions">
+        <div class="search-container">
+          <input type="text" class="search-input" id="searchInput" placeholder="Buscar produto..." />
+          <button class="search-btn" id="searchBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+        </div>
+        <button class="btn-login">Entrar</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero" class="mobile-nav-link">Início</a>
+    <a href="#offers" class="mobile-nav-link">Ofertas</a>
+    <a href="#stores" class="mobile-nav-link">Lojas</a>
+    <a href="#categories" class="mobile-nav-link">Categorias</a>
+    <a href="#blog" class="mobile-nav-link">Blog</a>
+    <a href="#about" class="mobile-nav-link">Sobre</a>
+    <button class="btn-login-mobile">Entrar</button>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-background">
+      <div class="hero-gradient"></div>
+      <div class="hero-particles"></div>
+    </div>
+    
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-icon">🔥</span>
+          <span class="badge-text">Atualizado em tempo real</span>
+        </div>
+        
+        <h1 class="hero-title">
+          As melhores <span class="highlight">ofertas</span> de hardware do Brasil
+        </h1>
+        
+        <p class="hero-subtitle">
+          Encontre promoções imperdíveis em peças de PC, periféricos gamer e notebooks. 
+          Monitoramos as principais lojas para você economizar tempo e dinheiro.
+        </p>
+        
+        <div class="hero-search">
+          <div class="search-wrapper">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input type="text" class="hero-search-input" id="heroSearchInput" placeholder="O que você está procurando?" />
+            <button class="hero-search-btn" id="heroSearchBtn">
+              <span>Buscar</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-tags">
+          <span class="tag">GPU</span>
+          <span class="tag">CPU</span>
+          <span class="tag">RAM</span>
+          <span class="tag">SSD</span>
+          <span class="tag">Monitor</span>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-glow"></div>
+          <div class="hero-card-content">
+            <div class="hero-card-image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+            </div>
+            <div class="hero-card-info">
+              <span class="hero-card-store">Kabum</span>
+              <span class="hero-card-title">RTX 4070 Super</span>
+              <div class="hero-card-price">
+                <span class="old-price">R$ 4.599</span>
+                <span class="new-price">R$ 3.899</span>
+                <span class="discount">-15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers Section -->
+  <section class="offers-section" id="offers">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-icon">⚡</span>
+          Ofertas em destaque
+        </h2>
+        <p class="section-subtitle">As melhores promoções selecionadas para você</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters-container">
+        <div class="filter-group">
+          <span class="filter-label">Loja</span>
+          <div class="filter-pills" id="filterStores">
+            <button class="filter-pill active" data-store="all">Todas</button>
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <span class="filter-label">Categoria</span>
+          <div class="filter-pills" id="filterCategories">
+            <button class="filter-pill active" data-category="all">Todas</button>
+            <button class="filter-pill" data-category="gpu">GPU</button>
+            <button class="filter-pill" data-category="cpu">CPU</button>
+            <button class="filter-pill" data-category="ram">RAM</button>
+            <button class="filter-pill" data-category="storage">SSD / HDD</button>
+            <button class="filter-pill" data-category="monitor">Monitor</button>
+            <button class="filter-pill" data-category="keyboard">Teclado</button>
+            <button class="filter-pill" data-category="mouse">Mouse</button>
+            <button class="filter-pill" data-category="headset">Headset</button>
+            <button class="filter-pill" data-category="psu">Fonte</button>
+            <button class="filter-pill" data-category="case">Gabinete</button>
+            <button class="filter-pill" data-category="cooling">Cooler</button>
+            <button class="filter-pill" data-category="notebook">Notebook</button>
+            <button class="filter-pill" data-category="other">Outros</button>
+          </div>
+        </div>
+
+        <div class="sort-group">
+          <select id="sortSelect" class="sort-select">
+            <option value="newest">Mais recentes</option>
+            <option value="discount">Maior desconto</option>
+            <option value="price_asc">Menor preço</option>
+            <option value="price_desc">Maior preço</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Deals Grid -->
+      <div class="deals-header">
+        <span id="dealsCount" class="deals-count">0 resultados</span>
+      </div>
+      
+      <div class="deals-grid" id="dealsGrid"></div>
+      
+      <div class="empty-state" id="emptyState" style="display:none">
+        <div class="empty-icon">🔍</div>
+        <h3>Nenhuma oferta encontrada</h3>
+        <p>Tente ajustar seus filtros ou buscar por outro termo.</p>
+        <button class="btn-reset" onclick="resetFilters()">Limpar filtros</button>
+      </div>
+      
+      <div class="loading-state" id="loadingState">
+        <div class="skeleton-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+        <p>Carregando ofertas...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stores Section -->
+  <section class="stores-section" id="stores">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-icon">🏪</span>
+          Lojas parceiras
+        </h2>
+        <p class="section-subtitle">Monitoramos as melhores lojas de hardware do Brasil</p>
+      </div>
+
+      <div class="stores-grid">
+        <a href="#" class="store-card" data-store="kabum">
+          <div class="store-logo">
+            <span class="store-name">Kabum</span>
+          </div>
+          <div class="store-glow"></div>
+        </a>
+        
+        <a href="#" class="store-card" data-store="pichau">
+          <div class="store-logo">
+            <span class="store-name">Pichau</span>
+          </div>
+          <div class="store-glow"></div>
+        </a>
+        
+        <a href="#" class="store-card" data-store="terabyte">
+          <div class="store-logo">
+            <span class="store-name">Terabyte</span>
+          </div>
+          <div class="store-glow"></div>
+        </a>
+        
+        <a href="#" class="store-card" data-store="amazon">
+          <div class="store-logo">
+            <span class="store-name">Amazon</span>
+          </div>
+          <div class="store-glow"></div>
+        </a>
+        
+        <a href="#" class="store-card" data-store="mercadolivre">
+          <div class="store-logo">
+            <span class="store-name">Mercado Livre</span>
+          </div>
+          <div class="store-glow"></div>
+        </a>
+        
+        <a href="#" class="store-card" data-store="aliexpress">
+          <div class="store-logo">
+            <span class="store-name">AliExpress</span>
+          </div>
+          <div class="store-glow"></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-icon">📂</span>
+          Categorias populares
+        </h2>
+        <p class="section-subtitle">Navegue pelas categorias mais procuradas</p>
+      </div>
+
+      <div class="categories-grid">
+        <a href="#offers" class="category-card" data-category="gpu">
+          <div class="category-icon">🎮</div>
+          <span class="category-name">Placas de Vídeo</span>
+        </a>
+        
+        <a href="#offers" class="category-card" data-category="cpu">
+          <div class="category-icon">⚙️</div>
+          <span class="category-name">Processadores</span>
+        </a>
+        
+        <a href="#offers" class="category-card" data-category="ram">
+          <div class="category-icon">🧠</div>
+          <span class="category-name">Memória RAM</span>
+        </a>
+        
+        <a href="#offers" class="category-card" data-category="storage">
+          <div class="category-icon">💾</div>
+          <span class="category-name">Armazenamento</span>
+        </a>
+        
+        <a href="#offers" class="category-card" data-category="monitor">
+          <div class="category-icon">🖥️</div>
+          <span class="category-name">Monitores</span>
+        </a>
+        
+        <a href="#offers" class="category-card" data-category="keyboard">
+          <div class="category-icon">⌨️</div>
+          <span class="category-name">Teclados</span>
+        </a>
+        
+        <a href="#offers" class="category-card" data-category="mouse">
+          <div class="category-icon">🖱️</div>
+          <span class="category-name">Mouses</span>
+        </a>
+        
+        <a href="#offers" class="category-card" data-category="notebook">
+          <div class="category-icon">💻</div>
+          <span class="category-name">Notebooks</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="about-title">
+            Sobre o <span class="highlight">PCDeals</span>
+          </h2>
+          <p class="about-description">
+            O PCDeals nasceu da paixão por hardware e tecnologia. Nossa missão é ajudar 
+            entusiastas e gamers a encontrar as melhores promoções do mercado brasileiro, 
+            monitorando as principais lojas 24/7.
+          </p>
+          <div class="about-features">
+            <div class="feature-item">
+              <span class="feature-icon">🎯</span>
+              <span>Ofertas verificadas</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">⚡</span>
+              <span>Atualização em tempo real</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🔒</span>
+              <span>Links seguros</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-card">
+            <div class="about-card-glow"></div>
+            <div class="about-card-content">
+              <span class="about-stat">24/7</span>
+              <span class="about-stat-label">Monitoramento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-icon">⚡</span>
+            <span class="logo-text">PCDeals</span>
+          </a>
+          <p class="footer-tagline">As melhores ofertas de hardware do Brasil</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4 class="footer-title">Navegação</h4>
+            <a href="#hero" class="footer-link">Início</a>
+            <a href="#offers" class="footer-link">Ofertas</a>
+            <a href="#stores" class="footer-link">Lojas</a>
+            <a href="#categories" class="footer-link">Categorias</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title">Legal</h4>
+            <a href="#" class="footer-link">Termos de uso</a>
+            <a href="#" class="footer-link">Privacidade</a>
+            <a href="#" class="footer-link">Contato</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title">Admin</h4>
+            <a href="admin/index.html" class="footer-link">Painel Admin</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 PCDeals. Todos os direitos reservados.</p>
+        <p class="footer-disclaimer">Preços podem variar. Confirme na loja antes de comprar.</p>
+        
+        <div class="easter-egg">
+          <span class="egg-trigger" id="eggTrigger">· · ·</span>
+          <div class="egg-content" id="eggContent" style="display:none">
+            <p>🥚 uau, você achou!</p>
+            <p>se você achou isso, se inscreve nesse canal no youtube :3</p>
+            <a href="https://www.youtube.com/channel/UC327Jd6Yy6dsaDDx8YBdTNA" target="_blank" rel="noopener noreferrer" class="egg-link">▶ Abrir canal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/app.js"></script>
+  <script>
+    // Loading Screen
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loadingScreen');
+      setTimeout(() => {
+        loadingScreen.classList.add('loaded');
+      }, 500);
+    });
+
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Hero Search
+    const heroSearchInput = document.getElementById('heroSearchInput');
+    const heroSearchBtn = document.getElementById('heroSearchBtn');
+    const mainSearchInput = document.getElementById('searchInput');
+
+    heroSearchBtn.addEventListener('click', () => {
+      if (heroSearchInput.value) {
+        mainSearchInput.value = heroSearchInput.value;
+        document.getElementById('offers').scrollIntoView({ behavior: 'smooth' });
+        mainSearchInput.dispatchEvent(new Event('input'));
+      }
+    });
+
+    heroSearchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        heroSearchBtn.click();
+      }
+    });
+
+    // Category cards click
+    document.querySelectorAll('.category-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = card.dataset.category;
+        const categoryBtn = document.querySelector(`[data-category="${category}"]`);
+        if (categoryBtn) {
+          categoryBtn.click();
+        }
+      });
+    });
+
+    // Store cards click
+    document.querySelectorAll('.store-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        const store = card.dataset.store;
+        const storeBtn = document.querySelector(`[data-store="${store}"]`);
+        if (storeBtn) {
+          storeBtn.click();
+        }
+      });
+    });
+
+    // Easter egg
+    let clicks = 0, timer;
+    document.getElementById("eggTrigger").addEventListener("click", () => {
+      clicks++;
+      clearTimeout(timer);
+      timer = setTimeout(() => { clicks = 0; }, 2000);
+      if (clicks >= 5) {
+        clicks = 0;
+        const content = document.getElementById("eggContent");
+        const trigger = document.getElementById("eggTrigger");
+        const visible = content.style.display === "none";
+        content.style.display = visible ? "flex" : "none";
+        trigger.textContent   = visible ? "🥚" : "· · ·";
+      }
+    });
+  </script>
+</body>
+</html>
