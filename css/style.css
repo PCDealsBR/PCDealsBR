@@ -677,6 +677,11 @@ input, select { font-family: var(--font); border: none; outline: none; }
   color: var(--accent);
   opacity: 0.5;
 }
+.hero-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .hero-card-info {
   display: flex;
   flex-direction: column;
