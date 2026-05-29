@@ -1645,20 +1645,20 @@ input, select { font-family: var(--font); border: none; outline: none; }
   width: 100%;
   max-width: 728px;
   margin: 0 auto;
-  padding: 8px 0;
+  padding: 4px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  min-height: 70px;
+  min-height: 50px;
 }
 .ad-top {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .ad-middle {
-  margin: 20px auto;
+  margin: 12px auto;
 }
 .adsbygoogle {
   display: block;
@@ -1807,6 +1807,9 @@ input, select { font-family: var(--font); border: none; outline: none; }
   .footer-links {
     grid-template-columns: repeat(3, 1fr);
   }
+  .ad-container {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1877,6 +1880,10 @@ input, select { font-family: var(--font); border: none; outline: none; }
   }
   .filter-pills {
     gap: 6px;
+  }
+  .ad-container {
+    min-height: 40px;
+    padding: 2px 0;
   }
   .filter-pill {
     padding: 6px 12px;

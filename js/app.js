@@ -228,22 +228,21 @@ const btnLogin = document.getElementById('btnLogin');
 const btnLoginMobile = document.getElementById('btnLoginMobile');
 
 onAuthStateChanged(auth, (user) => {
+  const btnAccount = document.getElementById('btnAccount');
   if (user) {
     if (btnLogin) {
       const loginText = btnLogin.querySelector('.login-text');
-      const userIcon = btnLogin.querySelector('.user-icon');
       if (loginText) loginText.textContent = 'Sair';
-      if (userIcon) userIcon.style.display = 'block';
     }
     if (btnLoginMobile) btnLoginMobile.textContent = 'Sair';
+    if (btnAccount) btnAccount.style.display = 'flex';
   } else {
     if (btnLogin) {
       const loginText = btnLogin.querySelector('.login-text');
-      const userIcon = btnLogin.querySelector('.user-icon');
       if (loginText) loginText.textContent = 'Entrar';
-      if (userIcon) userIcon.style.display = 'none';
     }
     if (btnLoginMobile) btnLoginMobile.textContent = 'Entrar';
+    if (btnAccount) btnAccount.style.display = 'none';
   }
 });
 
@@ -266,3 +265,11 @@ async function handleLogin() {
 
 if (btnLogin) btnLogin.addEventListener('click', handleLogin);
 if (btnLoginMobile) btnLoginMobile.addEventListener('click', handleLogin);
+
+// Account button
+const btnAccount = document.getElementById('btnAccount');
+if (btnAccount) {
+  btnAccount.addEventListener('click', () => {
+    window.location.href = 'account.html';
+  });
+}
