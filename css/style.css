@@ -1645,20 +1645,20 @@ input, select { font-family: var(--font); border: none; outline: none; }
   width: 100%;
   max-width: 728px;
   margin: 0 auto;
-  padding: 12px 0;
+  padding: 8px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  min-height: 90px;
+  min-height: 70px;
 }
 .ad-top {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .ad-middle {
-  margin: 32px auto;
+  margin: 20px auto;
 }
 .adsbygoogle {
   display: block;
