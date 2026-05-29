@@ -119,23 +119,8 @@ function buildCard(d) {
     }
   }
 
-  // Improved image handling - try to get URL from Firebase Storage if it's a storage path
-  let imageUrl = d.imageUrl;
-  if (imageUrl && !imageUrl.startsWith('http') && !imageUrl.startsWith('data:')) {
-    // It's likely a Firebase Storage path
-    try {
-      const storageRef = ref(storage, imageUrl);
-      getDownloadURL(storageRef).then(url => {
-        imageUrl = url;
-      }).catch(err => {
-        console.log('Storage URL error:', err);
-        imageUrl = null;
-      });
-    } catch (e) {
-      console.log('Storage ref error:', e);
-      imageUrl = null;
-    }
-  }
+  // Use imageUrl directly from Firestore - Firebase Storage URLs should already be full URLs
+  const imageUrl = d.imageUrl;
 
   const imgHTML = imageUrl
     ? `<img src="${imageUrl}" alt="${d.title}" loading="lazy" 
@@ -244,10 +229,20 @@ const btnLoginMobile = document.getElementById('btnLoginMobile');
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    if (btnLogin) btnLogin.textContent = 'Sair';
+    if (btnLogin) {
+      const loginText = btnLogin.querySelector('.login-text');
+      const userIcon = btnLogin.querySelector('.user-icon');
+      if (loginText) loginText.textContent = 'Sair';
+      if (userIcon) userIcon.style.display = 'block';
+    }
     if (btnLoginMobile) btnLoginMobile.textContent = 'Sair';
   } else {
-    if (btnLogin) btnLogin.textContent = 'Entrar';
+    if (btnLogin) {
+      const loginText = btnLogin.querySelector('.login-text');
+      const userIcon = btnLogin.querySelector('.user-icon');
+      if (loginText) loginText.textContent = 'Entrar';
+      if (userIcon) userIcon.style.display = 'none';
+    }
     if (btnLoginMobile) btnLoginMobile.textContent = 'Entrar';
   }
 });
