@@ -1123,6 +1123,10 @@ input, select { font-family: var(--font); border: none; outline: none; }
   font-weight: 800;
   color: var(--green);
   letter-spacing: -0.5px;
+  transition: color 0.3s ease;
+}
+.deal-card:hover .price-new {
+  color: var(--accent);
 }
 .price-installment {
   font-size: 12px;
