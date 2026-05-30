@@ -502,6 +502,7 @@ function updateCartCount() {
 }
 
 function addToCart(dealId) {
+  console.log('Adding to cart:', dealId);
   if (!cart.includes(dealId)) {
     cart.push(dealId);
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -551,6 +552,7 @@ function updateSavedButtons() {
 }
 
 function toggleSavePromo(dealId) {
+  console.log('Toggling save for:', dealId);
   const index = savedPromos.indexOf(dealId);
   if (index > -1) {
     savedPromos.splice(index, 1);
@@ -570,11 +572,13 @@ document.addEventListener('click', (e) => {
 
   if (saveBtn) {
     const dealId = saveBtn.dataset.id;
+    console.log('Save button clicked for:', dealId);
     toggleSavePromo(dealId);
   }
 
   if (cartBtn) {
     const dealId = cartBtn.dataset.id;
+    console.log('Cart button clicked for:', dealId);
     addToCart(dealId);
   }
 });
