@@ -19,6 +19,10 @@
 .form-group input::placeholder { color:var(--text3); }
 input[type="datetime-local"] { color-scheme:dark; }
 
+.checkbox-group { flex-direction:row; align-items:center; }
+.checkbox-label { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text2); cursor:pointer; }
+.checkbox-label input { accent-color:var(--accent); width:16px; height:16px; }
+
 .expiry-group { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:14px; }
 .expiry-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:8px; }
 .expiry-row input[type="datetime-local"] { flex:1; min-width:180px; }

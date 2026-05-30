@@ -29,12 +29,30 @@ let allDeals  = [];
 let editingId = null;
 
 // ── AUTH ──────────────────────────────────────────────────
+// Load saved email from localStorage
+const savedEmail = localStorage.getItem('adminEmail');
+if (savedEmail) {
+  document.getElementById("loginEmail").value = savedEmail;
+}
+
 document.getElementById("btnLogin").addEventListener("click", async () => {
   const email = document.getElementById("loginEmail").value.trim();
   const pass  = document.getElementById("loginPassword").value;
+  const rememberMe = document.getElementById("rememberMe").checked;
+  
   loginError.style.display = "none";
-  try { await signInWithEmailAndPassword(auth, email, pass); }
-  catch { loginError.textContent = "E-mail ou senha inválidos."; loginError.style.display = "block"; }
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+    // Save email if remember me is checked
+    if (rememberMe) {
+      localStorage.setItem('adminEmail', email);
+    } else {
+      localStorage.removeItem('adminEmail');
+    }
+  } catch {
+    loginError.textContent = "E-mail ou senha inválidos.";
+    loginError.style.display = "block";
+  }
 });
 document.getElementById("btnLogout").addEventListener("click", () => signOut(auth));
 onAuthStateChanged(auth, user => {
