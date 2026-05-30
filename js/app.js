@@ -36,16 +36,31 @@ function isExpired(d) {
 
 function subscribeDeals() {
   const q = query(collection(db, "deals"), orderBy("createdAt", "desc"));
+  
+  // Show skeleton loading
+  const skeletonGrid = document.getElementById('skeletonGrid');
+  const dealsGrid = document.getElementById('dealsGrid');
+  if (skeletonGrid) skeletonGrid.style.display = 'grid';
+  if (dealsGrid) dealsGrid.style.display = 'none';
+  
   onSnapshot(q, (snap) => {
     allDeals = snap.docs
       .map(doc => ({ id: doc.id, ...doc.data() }))
       .filter(d => !isExpired(d));
     buildStoreFilter();
+    
+    // Hide skeleton and show deals
+    if (skeletonGrid) skeletonGrid.style.display = 'none';
+    if (dealsGrid) dealsGrid.style.display = 'grid';
+    
     render();
     loadingState.style.display = "none";
   }, (err) => {
     console.warn("Firebase:", err.message);
     loadingState.innerHTML = "<p style='color:var(--accent)'>Erro ao carregar promoções.</p>";
+    
+    // Hide skeleton on error
+    if (skeletonGrid) skeletonGrid.style.display = 'none';
   });
 }
 
@@ -136,6 +151,13 @@ function buildCard(d) {
       ${pctOff > 0 ? `<span class="badge-discount">-${pctOff}%</span>` : ""}
       ${isNew     ? `<span class="badge-new">Novo</span>` : ""}
       ${expBadge}
+      <button class="btn-share" data-url="${d.url||"#"}" data-title="${d.title}" title="Compartilhar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+      </button>
     </div>
     <div class="card-body">
       <span class="card-store">${d.store||"Loja"}</span>
@@ -172,6 +194,28 @@ function buildCard(d) {
 if (searchInput) {
   searchInput.addEventListener("input", e => { searchTerm = e.target.value; render(); });
 }
+
+// Share functionality
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.btn-share')) {
+    const btn = e.target.closest('.btn-share');
+    const url = btn.dataset.url;
+    const title = btn.dataset.title;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        url: url
+      }).catch(console.error);
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        alert('Link copiado para a área de transferência!');
+      }).catch(() => {
+        alert('Não foi possível compartilhar. Copie o link manualmente.');
+      });
+    }
+  }
+});
 
 // Sort select event
 if (sortSelect) {
