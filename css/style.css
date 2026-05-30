@@ -1151,11 +1151,15 @@ input, select { font-family: var(--font); border: none; outline: none; }
   font-weight: 600;
   padding: 10px 20px;
   border-radius: var(--radius);
-  transition: all var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-glow);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 .btn-deal:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 25px var(--accent-glow);
 }
 
