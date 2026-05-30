@@ -154,15 +154,14 @@ input, select { font-family: var(--font); border: none; outline: none; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: transparent;
-  transition: all var(--transition);
-  backdrop-filter: blur(0px);
+  background: rgba(10, 10, 20, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
 }
 .navbar.scrolled {
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--shadow);
+  background: rgba(10, 10, 20, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 .navbar-container {
   max-width: 1280px;
