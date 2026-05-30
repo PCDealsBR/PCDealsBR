@@ -325,6 +325,14 @@ if (btnSaved) {
   });
 }
 
+// Alerts button click
+const btnAlerts = document.getElementById('btnAlerts');
+if (btnAlerts) {
+  btnAlerts.addEventListener('click', () => {
+    window.location.href = 'alerts.html';
+  });
+}
+
 /* ── Save Promo Functionality ─────────────────────────────── */
 let savedPromos = JSON.parse(localStorage.getItem('savedPromos')) || [];
 
