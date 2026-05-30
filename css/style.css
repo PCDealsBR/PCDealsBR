@@ -1092,6 +1092,10 @@ input, select { font-family: var(--font); border: none; outline: none; }
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+.deal-card:hover .card-title {
+  color: var(--accent);
 }
 .card-category {
   font-size: 12px;
