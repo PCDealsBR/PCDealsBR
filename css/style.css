@@ -1009,14 +1009,25 @@ input, select { font-family: var(--font); border: none; outline: none; }
   position: absolute;
   top: 12px;
   right: 12px;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, #ff4444 100%);
   color: #fff;
   font-size: 12px;
   font-weight: 700;
   padding: 6px 12px;
   border-radius: 8px;
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
   z-index: 2;
+  animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 .badge-new {
   position: absolute;
