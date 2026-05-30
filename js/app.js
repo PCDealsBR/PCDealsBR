@@ -236,6 +236,153 @@ initTheme();
 if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
 if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
 
+/* ── Filtering & Sorting ───────────────────────────────── */
+let currentFilters = {
+  store: 'all',
+  category: 'all',
+  priceMin: null,
+  priceMax: null
+};
+let currentSort = 'newest';
+
+function applyFiltersAndSort() {
+  let filteredDeals = [...allDeals];
+  
+  // Filter by store
+  if (currentFilters.store !== 'all') {
+    filteredDeals = filteredDeals.filter(deal => 
+      deal.store?.toLowerCase() === currentFilters.store.toLowerCase()
+    );
+  }
+  
+  // Filter by category
+  if (currentFilters.category !== 'all') {
+    filteredDeals = filteredDeals.filter(deal => 
+      deal.category?.toLowerCase() === currentFilters.category.toLowerCase()
+    );
+  }
+  
+  // Filter by price range
+  if (currentFilters.priceMin !== null) {
+    filteredDeals = filteredDeals.filter(deal => 
+      deal.priceNew >= currentFilters.priceMin
+    );
+  }
+  if (currentFilters.priceMax !== null) {
+    filteredDeals = filteredDeals.filter(deal => 
+      deal.priceNew <= currentFilters.priceMax
+    );
+  }
+  
+  // Sort
+  switch (currentSort) {
+    case 'discount':
+      filteredDeals.sort((a, b) => {
+        const discountA = a.priceOld && a.priceNew ? (a.priceOld - a.priceNew) / a.priceOld : 0;
+        const discountB = b.priceOld && b.priceNew ? (b.priceOld - b.priceNew) / b.priceOld : 0;
+        return discountB - discountA;
+      });
+      break;
+    case 'price_asc':
+      filteredDeals.sort((a, b) => (a.priceNew || 0) - (b.priceNew || 0));
+      break;
+    case 'price_desc':
+      filteredDeals.sort((a, b) => (b.priceNew || 0) - (a.priceNew || 0));
+      break;
+    case 'popular':
+      filteredDeals.sort((a, b) => (b.views || 0) - (a.views || 0));
+      break;
+    case 'newest':
+    default:
+      filteredDeals.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+      break;
+  }
+  
+  renderDeals(filteredDeals);
+}
+
+// Store filter buttons
+document.getElementById('filterStores')?.addEventListener('click', (e) => {
+  if (e.target.classList.contains('filter-pill')) {
+    document.querySelectorAll('#filterStores .filter-pill').forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+    currentFilters.store = e.target.dataset.store;
+    applyFiltersAndSort();
+  }
+});
+
+// Category filter buttons
+document.getElementById('filterCategories')?.addEventListener('click', (e) => {
+  if (e.target.classList.contains('filter-pill')) {
+    document.querySelectorAll('#filterCategories .filter-pill').forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+    currentFilters.category = e.target.dataset.category;
+    applyFiltersAndSort();
+  }
+});
+
+// Sort select
+document.getElementById('sortSelect')?.addEventListener('change', (e) => {
+  currentSort = e.target.value;
+  applyFiltersAndSort();
+});
+
+// Price filter
+document.getElementById('applyPriceFilter')?.addEventListener('click', () => {
+  const priceMin = parseFloat(document.getElementById('priceMin').value) || null;
+  const priceMax = parseFloat(document.getElementById('priceMax').value) || null;
+  currentFilters.priceMin = priceMin;
+  currentFilters.priceMax = priceMax;
+  applyFiltersAndSort();
+});
+
+// Search functionality
+const heroSearchInput = document.getElementById('heroSearchInput');
+const searchBtn = document.getElementById('searchBtn');
+const heroSearchBtn = document.getElementById('heroSearchBtn');
+
+function performSearch(query) {
+  if (!query || query.trim() === '') {
+    applyFiltersAndSort();
+    return;
+  }
+  
+  const searchTerms = query.toLowerCase().split(' ');
+  let filteredDeals = allDeals.filter(deal => {
+    const title = deal.title?.toLowerCase() || '';
+    const store = deal.store?.toLowerCase() || '';
+    const category = deal.category?.toLowerCase() || '';
+    
+    return searchTerms.some(term => 
+      title.includes(term) || 
+      store.includes(term) || 
+      category.includes(term)
+    );
+  });
+  
+  renderDeals(filteredDeals);
+}
+
+if (searchInput && searchBtn) {
+  searchBtn.addEventListener('click', () => performSearch(searchInput.value));
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') performSearch(searchInput.value);
+  });
+}
+
+if (heroSearchInput && heroSearchBtn) {
+  heroSearchBtn.addEventListener('click', () => {
+    performSearch(heroSearchInput.value);
+    document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' });
+  });
+  heroSearchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      performSearch(heroSearchInput.value);
+      document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
 /* ── Firebase Authentication ───────────────────────────── */
 const provider = new GoogleAuthProvider();
 const btnLogin = document.getElementById('btnLogin');

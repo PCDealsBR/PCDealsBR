@@ -1549,6 +1549,52 @@ input, select { font-family: var(--font); border: none; outline: none; }
   margin: 0;
 }
 
+/* ── Price Filter ───────────────────────────────────────── */
+.price-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.price-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.price-input {
+  width: 80px;
+  padding: 8px 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 14px;
+  transition: all var(--transition);
+}
+.price-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--card);
+}
+.price-separator {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.btn-filter-apply {
+  padding: 8px 16px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-filter-apply:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
 /* ── Skeleton Loading ───────────────────────────────────── */
 .skeleton-grid {
   display: grid;

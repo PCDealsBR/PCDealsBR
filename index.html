@@ -260,7 +260,18 @@
             <option value="discount">Maior desconto</option>
             <option value="price_asc">Menor preço</option>
             <option value="price_desc">Maior preço</option>
+            <option value="popular">Mais populares</option>
           </select>
+        </div>
+
+        <div class="price-filter-group">
+          <span class="filter-label">Preço</span>
+          <div class="price-range">
+            <input type="number" id="priceMin" class="price-input" placeholder="Min" min="0" />
+            <span class="price-separator">-</span>
+            <input type="number" id="priceMax" class="price-input" placeholder="Max" min="0" />
+            <button id="applyPriceFilter" class="btn-filter-apply">Filtrar</button>
+          </div>
         </div>
       </div>
 
