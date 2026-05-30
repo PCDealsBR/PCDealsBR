@@ -861,7 +861,8 @@ input, select { font-family: var(--font); border: none; outline: none; }
   background: var(--bg2);
 }
 .filters-container {
-  background: var(--surface);
+  background: var(--glass);
+  backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 24px;
