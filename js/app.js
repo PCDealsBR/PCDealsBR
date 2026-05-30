@@ -313,7 +313,15 @@ function addToCart(dealId) {
 const btnCart = document.getElementById('btnCart');
 if (btnCart) {
   btnCart.addEventListener('click', () => {
-    alert(`Carrinho: ${cart.length} promoções`);
+    window.location.href = 'cart.html';
+  });
+}
+
+// Saved button click
+const btnSaved = document.getElementById('btnSaved');
+if (btnSaved) {
+  btnSaved.addEventListener('click', () => {
+    window.location.href = 'saved.html';
   });
 }
 
