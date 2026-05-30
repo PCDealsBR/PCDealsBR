@@ -1033,7 +1033,7 @@ input, select { font-family: var(--font); border: none; outline: none; }
   position: absolute;
   top: 12px;
   left: 12px;
-  background: var(--green);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #fff;
   font-size: 11px;
   font-weight: 700;
@@ -1042,6 +1042,18 @@ input, select { font-family: var(--font); border: none; outline: none; }
   text-transform: uppercase;
   letter-spacing: 0.5px;
   z-index: 2;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  animation: slideInLeft 0.3s ease-out;
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 .badge-expiring {
   position: absolute;
