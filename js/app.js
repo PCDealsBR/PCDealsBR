@@ -115,6 +115,9 @@ function render() {
   if (!list.length) { grid.innerHTML=""; emptyState.style.display="flex"; return; }
   emptyState.style.display = "none";
   grid.innerHTML = list.map(buildCard).join("");
+  
+  // Update saved buttons after rendering
+  setTimeout(updateSavedButtons, 100);
 }
 
 function buildCard(d) {
@@ -600,4 +603,5 @@ document.addEventListener('click', (e) => {
 
 // Initialize cart count and saved buttons on load
 updateCartCount();
-setTimeout(updateSavedButtons, 1000); // Wait for cards to render
+// Remove the setTimeout since we now call updateSavedButtons in render()
+// setTimeout(updateSavedButtons, 1000); // Wait for cards to render
