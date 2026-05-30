@@ -2258,7 +2258,8 @@ input, select { font-family: var(--font); border: none; outline: none; }
 
 /* ── Footer ─────────────────────────────────────────────── */
 .footer {
-  background: var(--surface);
+  background: rgba(10, 10, 20, 0.95);
+  backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
   padding: 60px 0 30px;
 }
