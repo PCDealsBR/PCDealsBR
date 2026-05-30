@@ -17,6 +17,7 @@ async function loadDeals() {
     renderCart();
   } catch (error) {
     console.error('Error loading deals:', error);
+    // Fallback: try to render with empty deals
     renderCart();
   }
 }
@@ -32,6 +33,9 @@ function renderCart() {
   const totalItems = document.getElementById('totalItems');
   const totalSavings = document.getElementById('totalSavings');
   
+  console.log('Cart:', cart);
+  console.log('All deals:', allDeals);
+  
   if (cart.length === 0) {
     cartItems.innerHTML = '';
     cartEmpty.style.display = 'flex';
@@ -43,6 +47,13 @@ function renderCart() {
   cartSummary.style.display = 'block';
   
   const cartDeals = allDeals.filter(deal => cart.includes(deal.id));
+  console.log('Cart deals:', cartDeals);
+  
+  if (cartDeals.length === 0) {
+    cartItems.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-muted)">Nenhuma promoção encontrada. Os itens podem ter sido removidos.</p>';
+    cartSummary.style.display = 'none';
+    return;
+  }
   
   let totalDiscount = 0;
   

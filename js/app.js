@@ -151,13 +151,6 @@ function buildCard(d) {
       ${pctOff > 0 ? `<span class="badge-discount">-${pctOff}%</span>` : ""}
       ${isNew     ? `<span class="badge-new">Novo</span>` : ""}
       ${expBadge}
-      <button class="btn-share" data-url="${d.url||"#"}" data-title="${d.title}" title="Compartilhar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-          <polyline points="16 6 12 2 8 6"/>
-          <line x1="12" y1="2" x2="12" y2="15"/>
-        </svg>
-      </button>
     </div>
     <div class="card-body">
       <span class="card-store">${d.store||"Loja"}</span>
@@ -182,6 +175,13 @@ function buildCard(d) {
             <circle cx="9" cy="21" r="1"/>
             <circle cx="20" cy="21" r="1"/>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </button>
+        <button class="btn-share" data-url="${d.url||"#"}" data-title="${d.title}" title="Compartilhar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
           </svg>
         </button>
         <a href="${d.url||"#"}" target="_blank" rel="noopener noreferrer" class="btn-deal">Ver oferta →</a>
