@@ -476,7 +476,22 @@ async function handleLogin() {
     console.error('Authentication error:', error);
     console.error('Error code:', error.code);
     console.error('Error message:', error.message);
-    alert(`Erro ao fazer login: ${error.message}\n\nVerifique se o Google Sign-In está habilitado no console do Firebase.`);
+    
+    let errorMsg = `Erro ao fazer login: ${error.message}`;
+    
+    if (error.code === 'auth/popup-closed-by-user') {
+      errorMsg = 'Login cancelado pelo usuário.';
+    } else if (error.code === 'auth/popup-blocked') {
+      errorMsg = 'Popup bloqueado pelo navegador. Permita popups para este site.';
+    } else if (error.code === 'auth/unauthorized-domain') {
+      errorMsg = 'Domínio não autorizado. Adicione este domínio ao console do Firebase.';
+    } else if (error.code === 'auth/configuration-not-found') {
+      errorMsg = 'Google Sign-In não configurado. Ative o Google Sign-In no console do Firebase.';
+    } else {
+      errorMsg += '\n\nVerifique se o Google Sign-In está habilitado no console do Firebase.';
+    }
+    
+    alert(errorMsg);
   }
 }
 
