@@ -149,7 +149,21 @@ function buildCard(d) {
     </div>
     <div class="card-footer">
       <span class="card-date">${dateStr}</span>
-      <a href="${d.url||"#"}" target="_blank" rel="noopener noreferrer" class="btn-deal">Ver oferta →</a>
+      <div class="card-actions">
+        <button class="btn-save" data-id="${d.id}" title="Salvar promo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+        </button>
+        <button class="btn-add-cart" data-id="${d.id}" title="Adicionar ao carrinho">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </button>
+        <a href="${d.url||"#"}" target="_blank" rel="noopener noreferrer" class="btn-deal">Ver oferta →</a>
+      </div>
     </div>
   </article>`;
 }
@@ -273,3 +287,79 @@ if (btnAccount) {
     window.location.href = 'account.html';
   });
 }
+
+/* ── Cart Functionality ─────────────────────────────────── */
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function updateCartCount() {
+  const cartCount = document.getElementById('cartCount');
+  if (cartCount) {
+    cartCount.textContent = cart.length;
+  }
+}
+
+function addToCart(dealId) {
+  if (!cart.includes(dealId)) {
+    cart.push(dealId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert('Promoção adicionada ao carrinho!');
+  } else {
+    alert('Esta promoção já está no carrinho.');
+  }
+}
+
+// Cart button click
+const btnCart = document.getElementById('btnCart');
+if (btnCart) {
+  btnCart.addEventListener('click', () => {
+    alert(`Carrinho: ${cart.length} promoções`);
+  });
+}
+
+/* ── Save Promo Functionality ─────────────────────────────── */
+let savedPromos = JSON.parse(localStorage.getItem('savedPromos')) || [];
+
+function updateSavedButtons() {
+  document.querySelectorAll('.btn-save').forEach(btn => {
+    const dealId = btn.dataset.id;
+    if (savedPromos.includes(dealId)) {
+      btn.classList.add('saved');
+    } else {
+      btn.classList.remove('saved');
+    }
+  });
+}
+
+function toggleSavePromo(dealId) {
+  const index = savedPromos.indexOf(dealId);
+  if (index > -1) {
+    savedPromos.splice(index, 1);
+    alert('Promoção removida dos salvos.');
+  } else {
+    savedPromos.push(dealId);
+    alert('Promoção salva!');
+  }
+  localStorage.setItem('savedPromos', JSON.stringify(savedPromos));
+  updateSavedButtons();
+}
+
+// Event delegation for save and cart buttons
+document.addEventListener('click', (e) => {
+  const saveBtn = e.target.closest('.btn-save');
+  const cartBtn = e.target.closest('.btn-add-cart');
+
+  if (saveBtn) {
+    const dealId = saveBtn.dataset.id;
+    toggleSavePromo(dealId);
+  }
+
+  if (cartBtn) {
+    const dealId = cartBtn.dataset.id;
+    addToCart(dealId);
+  }
+});
+
+// Initialize cart count and saved buttons on load
+updateCartCount();
+setTimeout(updateSavedButtons, 1000); // Wait for cards to render
