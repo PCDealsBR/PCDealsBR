@@ -949,20 +949,36 @@ input, select { font-family: var(--font); border: none; outline: none; }
 
 /* ── Deal Card ─────────────────────────────────────────── */
 .deal-card {
-  background: var(--card);
+  background: var(--glass);
+  backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all var(--transition);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   animation: fadeUp 0.4s ease-out;
 }
+.deal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
 .deal-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.02);
   border-color: var(--accent);
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px var(--accent-glow);
+}
+.deal-card:hover::before {
+  opacity: 1;
 }
 .card-img {
   width: 100%;
